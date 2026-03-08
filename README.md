@@ -1,4 +1,3 @@
-
 # Our EBCPA protocol
 
 Source codes of solidity-based smart contract, NS, VanetMobiSim in our proposed EBCPA.
@@ -84,7 +83,7 @@ execution cost: 24348 gas
 ## 2. Go-based Chaincode
 
 ### 2.1 Environment
-Ubuntu: v19.04
+Ubuntu 22.04/WSL2
 
 Fabric: v2.1
 
@@ -145,46 +144,57 @@ order: gawk -f awk_Packet_Loss_RSU.awk ns_trace.tr
 output: the final packet loss
 
 
-更新
-# EBCPA 论文环境完整检查报告
-=====================================
+---
 
-## 一、系统信息
-```
-Distributor ID:	Ubuntu
-Description:	Ubuntu 22.04.5 LTS
-Release:	22.04
-Codename:	jammy
-Linux CHINAMI-MMJLF0R 6.6.87.2-microsoft-standard-WSL2 #1 SMP PREEMPT_DYNAMIC Thu Jun  5 18:30:46 UTC 2025 x86_64 x86_64 x86_64 GNU/Linux
-/root/EBCPA
+## Appendix: Full Environment Check Report
+
+### 1. System Information
+
+```text
+Distributor ID: Ubuntu
+Description:    Ubuntu 22.04.5 LTS
+Release:        22.04
+Codename:       jammy
+Kernel:         Linux CHINAMI-MMJLF0R 6.6.87.2-microsoft-standard-WSL2 #1 SMP PREEMPT_DYNAMIC Thu Jun  5 18:30:46 UTC 2025 x86_64
+Workspace:      /root/EBCPA4ourAlogrithm
 ```
 
-## 二、Docker / Docker Compose
-```
+### 2. Docker / Docker Compose
+
+```text
 Docker version 29.2.1, build a5c7197
 Docker Compose version v5.0.2
 ```
 
-## 三、Go 语言
-```
+### 3. Go
+
+```text
 go version go1.17 linux/amd64
 GOPATH="/root/go"
 GOROOT="/usr/local/go"
 ```
 
-## 四、Node.js / npm / npx
-```
-v10.22.1
-6.14.6
-10.2.2
+### 4. Node.js / npm / npx
+
+```text
+node: v10.22.1
+npm:  6.14.6
+npx:  10.2.2
 ```
 
-## 五、Caliper 版本（论文核心）
-```
+### 5. Caliper (core for the paper)
+
+```text
 v0.4.0
 ```
-## 六、执行下面两步就能看到最终报告：
-```
-- （第一次或重建网络后）先部署链码/身份：`bash /root/EBCPA/deploy_apklist_lifecycle.sh`
-- 然后压测：`bash /root/EBCPA/run_benchmark.sh`
+
+### 6. Run the following two steps to obtain the final benchmark report
+
+```bash
+# (First run, or after recreating the Fabric network)
+# Deploy network + identities + chaincode
+bash /root/EBCPA4ourAlogrithm/deploy_apklist_lifecycle.sh
+
+# Run Caliper benchmark and generate report.html
+bash /root/EBCPA4ourAlogrithm/run_benchmark.sh
 ```
