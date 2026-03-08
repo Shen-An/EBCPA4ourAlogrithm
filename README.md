@@ -183,3 +183,8 @@ v10.22.1
 ```
 v0.4.0
 ```
+## 六、执行下面两步就能看到最终报告：
+```
+- （第一次或重建网络后）先部署链码/身份：`bash /root/EBCPA/deploy_apklist_lifecycle.sh`
+- 然后压测：`bash /root/EBCPA/run_benchmark.sh`
+```
