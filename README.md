@@ -87,3 +87,5 @@ npx:  10.2.2
 ```text
 v0.4.0
 ```
+### 6.Hyperledger Fabric
+Version: 2.1.0
