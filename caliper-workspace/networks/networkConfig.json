@@ -15,7 +15,7 @@
                 },
                 "organization": "Org1",
                 "clientPrivateKey": {
-                    "path": "../../fabric/fabric-samples/test-network/organizations/peerOrganizations/org1.example.com/users/creator1@org1.example.com/msp/keystore/47169268a0652bddf70ac6a91a1a304575f9f41e6a7e09a13d81e25fdd08b2c0_sk"
+                    "path": "../../fabric/fabric-samples/test-network/organizations/peerOrganizations/org1.example.com/users/creator1@org1.example.com/msp/keystore/cd5b3c9d38c65a27f6e412529fe34f8fa19269afe8b5735e85e532ebe84aa283_sk"
                 },
                 "clientSignedCert": {
                     "path": "../../fabric/fabric-samples/test-network/organizations/peerOrganizations/org1.example.com/users/creator1@org1.example.com/msp/signcerts/cert.pem"
