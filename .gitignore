@@ -1,0 +1,12 @@
+node_modules/
+npm-debug.log
+.env
+*.key
+*.pem
+*.rsa
+fabric-samples/
+tmp/
+log/
+*.log
+.vscode/
+.idea/
