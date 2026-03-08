@@ -143,3 +143,43 @@ output: the final average delay
 order: gawk -f awk_Packet_Loss_RSU.awk ns_trace.tr
 
 output: the final packet loss
+
+
+更新
+# EBCPA 论文环境完整检查报告
+=====================================
+
+## 一、系统信息
+```
+Distributor ID:	Ubuntu
+Description:	Ubuntu 22.04.5 LTS
+Release:	22.04
+Codename:	jammy
+Linux CHINAMI-MMJLF0R 6.6.87.2-microsoft-standard-WSL2 #1 SMP PREEMPT_DYNAMIC Thu Jun  5 18:30:46 UTC 2025 x86_64 x86_64 x86_64 GNU/Linux
+/root/EBCPA
+```
+
+## 二、Docker / Docker Compose
+```
+Docker version 29.2.1, build a5c7197
+Docker Compose version v5.0.2
+```
+
+## 三、Go 语言
+```
+go version go1.17 linux/amd64
+GOPATH="/root/go"
+GOROOT="/usr/local/go"
+```
+
+## 四、Node.js / npm / npx
+```
+v10.22.1
+6.14.6
+10.2.2
+```
+
+## 五、Caliper 版本（论文核心）
+```
+v0.4.0
+```
