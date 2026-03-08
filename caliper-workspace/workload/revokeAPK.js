@@ -4,13 +4,7 @@ const { WorkloadModuleBase } = require('@hyperledger/caliper-core');
 
 const helper = require('./helper');
 
-/**
- * Workload module for the benchmark round.
- */
-class CheckAPKWorkload extends WorkloadModuleBase {
-    /**
-     * Initializes the workload module instance.
-     */
+class RevokeWorkload extends WorkloadModuleBase {
     constructor() {
         super();
         this.txIndex = 0;
@@ -19,26 +13,20 @@ class CheckAPKWorkload extends WorkloadModuleBase {
 
     async initializeWorkloadModule(workerIndex, totalWorkers, roundIndex, roundArguments, sutAdapter, sutContext) {
         await super.initializeWorkloadModule(workerIndex, totalWorkers, roundIndex, roundArguments, sutAdapter, sutContext);
-
         this.limitIndex = this.roundArguments.assets;
-        await helper.submitAPK(this.sutAdapter, this.workerIndex, this.roundArguments);
+        await helper.uploadWitness(this.sutAdapter, this.workerIndex, this.roundArguments);
     }
 
-    /**
-     * Assemble TXs for the round.
-     * @return {Promise<TxStatus[]>}
-     */
     async submitTransaction() {
         this.txIndex++;
-        let hash = 'Hash' + this.workerIndex + '_APK' + this.txIndex.toString();
+        const id = 'ID' + this.workerIndex + '_' + this.txIndex.toString();
 
-        let args = {
+        const args = {
             contractId: 'apklist',
             contractVersion: 'v1',
             contractFunction: 'Revoke',
-            contractArguments: [hash],
-            timeout: 30,
-            readOnly: true
+            contractArguments: [id],
+            timeout: 30
         };
 
         if (this.txIndex === this.limitIndex) {
@@ -49,12 +37,8 @@ class CheckAPKWorkload extends WorkloadModuleBase {
     }
 }
 
-/**
- * Create a new instance of the workload module.
- * @return {WorkloadModuleInterface}
- */
 function createWorkloadModule() {
-    return new CheckAPKWorkload();
+    return new RevokeWorkload();
 }
 
 module.exports.createWorkloadModule = createWorkloadModule;

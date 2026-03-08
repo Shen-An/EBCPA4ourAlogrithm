@@ -7,7 +7,7 @@ const helper = require('./helper');
 /**
  * Workload module for the benchmark round.
  */
-class CheckAPKWorkload extends WorkloadModuleBase {
+class RetrieveWorkload extends WorkloadModuleBase {
     /**
      * Initializes the workload module instance.
      */
@@ -21,7 +21,7 @@ class CheckAPKWorkload extends WorkloadModuleBase {
         await super.initializeWorkloadModule(workerIndex, totalWorkers, roundIndex, roundArguments, sutAdapter, sutContext);
 
         this.limitIndex = this.roundArguments.assets;
-        await helper.submitAPK(this.sutAdapter, this.workerIndex, this.roundArguments);
+        await helper.uploadWitness(this.sutAdapter, this.workerIndex, this.roundArguments);
     }
 
     /**
@@ -30,13 +30,13 @@ class CheckAPKWorkload extends WorkloadModuleBase {
      */
     async submitTransaction() {
         this.txIndex++;
-        let hash = 'Hash' + this.workerIndex + '_APK' + this.txIndex.toString();
+        const id = 'ID' + this.workerIndex + '_' + this.txIndex.toString();
 
-        let args = {
+        const args = {
             contractId: 'apklist',
             contractVersion: 'v1',
-            contractFunction: 'Check',
-            contractArguments: [hash],
+            contractFunction: 'Retrieve',
+            contractArguments: [id],
             timeout: 30,
             readOnly: true
         };
@@ -54,7 +54,7 @@ class CheckAPKWorkload extends WorkloadModuleBase {
  * @return {WorkloadModuleInterface}
  */
 function createWorkloadModule() {
-    return new CheckAPKWorkload();
+    return new RetrieveWorkload();
 }
 
 module.exports.createWorkloadModule = createWorkloadModule;
