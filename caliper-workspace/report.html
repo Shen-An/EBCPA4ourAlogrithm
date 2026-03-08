@@ -154,13 +154,13 @@
                     </tr>
 
                     <tr>
-                         <td>submitAPK</td> <td>500</td> <td>0</td> <td>25.1</td> <td>2.05</td> <td>0.03</td> <td>0.25</td> <td>22.8</td>
+                         <td>submitAPK</td> <td>500</td> <td>0</td> <td>31.0</td> <td>1.99</td> <td>0.02</td> <td>0.19</td> <td>31.0</td>
                     </tr>
                     <tr>
-                         <td>checkAPK</td> <td>500</td> <td>0</td> <td>315.3</td> <td>0.03</td> <td>0.00</td> <td>0.01</td> <td>314.5</td>
+                         <td>checkAPK</td> <td>500</td> <td>0</td> <td>537.6</td> <td>0.01</td> <td>0.00</td> <td>0.00</td> <td>536.5</td>
                     </tr>
                     <tr>
-                         <td>revokeAPK</td> <td>500</td> <td>0</td> <td>336.7</td> <td>0.04</td> <td>0.00</td> <td>0.01</td> <td>335.8</td>
+                         <td>revokeAPK</td> <td>500</td> <td>0</td> <td>532.5</td> <td>0.01</td> <td>0.00</td> <td>0.00</td> <td>531.3</td>
                     </tr>
                 </table>
             </div>
@@ -177,7 +177,7 @@
                                      <th>Name</th> <th>Succ</th> <th>Fail</th> <th>Send Rate (TPS)</th> <th>Max Latency (s)</th> <th>Min Latency (s)</th> <th>Avg Latency (s)</th> <th>Throughput (TPS)</th>
                                 </tr>
                                 <tr>
-                                     <td>submitAPK</td> <td>500</td> <td>0</td> <td>25.1</td> <td>2.05</td> <td>0.03</td> <td>0.25</td> <td>22.8</td>
+                                     <td>submitAPK</td> <td>500</td> <td>0</td> <td>31.0</td> <td>1.99</td> <td>0.02</td> <td>0.19</td> <td>31.0</td>
                                 </tr>
                             </table>
                         <h3>Resource utilization for submitAPK</h3>
@@ -186,34 +186,31 @@
                                 <tr>
                                 <table>
                                     <tr>
-                                         <th>Name</th> <th>CPU%(max)</th> <th>CPU%(avg)</th> <th>Memory(max) [MB]</th> <th>Memory(avg) [MB]</th> <th>Traffic In [MB]</th> <th>Traffic Out [MB]</th> <th>Disc Write [MB]</th> <th>Disc Read [KB]</th>
+                                         <th>Name</th> <th>CPU%(max)</th> <th>CPU%(avg)</th> <th>Memory(max) [MB]</th> <th>Memory(avg) [MB]</th> <th>Traffic In [MB]</th> <th>Traffic Out [KB]</th> <th>Disc Write [B]</th> <th>Disc Read [KB]</th>
                                     </tr>
                                     <tr>
-                                         <td>dev-peer0.org2.example.com-apklist_1.0-1c788deacf9d5081c603ab5fa24a0bf400c2e33fbc097c1c823341d014400f19</td> <td>6.07</td> <td>1.62</td> <td>8.98</td> <td>8.54</td> <td>1.18</td> <td>0.520</td> <td>0.00</td> <td>0.00</td>
+                                         <td>dev-peer0.org1.example.com-apklist_1-5d89a0782b0e6ae4d51250a07c67eee4e76ab141b0165b45572fd8e0c596b244</td> <td>0.00</td> <td>0.00</td> <td>10.1</td> <td>9.13</td> <td>1.31</td> <td>662</td> <td>0.00</td> <td>312</td>
                                     </tr>
                                     <tr>
-                                         <td>dev-peer0.org1.example.com-apklist_1.0-1c788deacf9d5081c603ab5fa24a0bf400c2e33fbc097c1c823341d014400f19</td> <td>7.00</td> <td>1.82</td> <td>16.5</td> <td>16.0</td> <td>1.18</td> <td>0.522</td> <td>0.00</td> <td>176</td>
+                                         <td>dev-peer0.org2.example.com-apklist_1-5d89a0782b0e6ae4d51250a07c67eee4e76ab141b0165b45572fd8e0c596b244</td> <td>0.00</td> <td>0.00</td> <td>9.41</td> <td>7.91</td> <td>1.30</td> <td>659</td> <td>0.00</td> <td>376</td>
                                     </tr>
                                     <tr>
-                                         <td>cli</td> <td>0.00</td> <td>0.00</td> <td>8.65</td> <td>8.52</td> <td>0.00</td> <td>0.00</td> <td>0.00</td> <td>0.00</td>
+                                         <td>orderer.example.com</td> <td>NaN</td> <td>NaN</td> <td>29.0</td> <td>21.5</td> <td>-</td> <td>-</td> <td>-</td> <td>-</td>
                                     </tr>
                                     <tr>
-                                         <td>orderer.example.com</td> <td>5.43</td> <td>1.80</td> <td>36.4</td> <td>31.7</td> <td>2.66</td> <td>5.20</td> <td>5.50</td> <td>584</td>
+                                         <td>peer0.org1.example.com</td> <td>NaN</td> <td>NaN</td> <td>-</td> <td>-</td> <td>-</td> <td>-</td> <td>-</td> <td>-</td>
                                     </tr>
                                     <tr>
-                                         <td>peer0.org1.example.com</td> <td>17.71</td> <td>8.23</td> <td>124</td> <td>124</td> <td>3.99</td> <td>2.23</td> <td>3.66</td> <td>268</td>
+                                         <td>peer0.org2.example.com</td> <td>NaN</td> <td>NaN</td> <td>-</td> <td>-</td> <td>-</td> <td>-</td> <td>-</td> <td>-</td>
                                     </tr>
                                     <tr>
-                                         <td>peer0.org2.example.com</td> <td>15.46</td> <td>8.19</td> <td>113</td> <td>98.9</td> <td>3.97</td> <td>2.08</td> <td>3.66</td> <td>416</td>
+                                         <td>ca_org1</td> <td>NaN</td> <td>NaN</td> <td>-</td> <td>-</td> <td>-</td> <td>-</td> <td>-</td> <td>-</td>
                                     </tr>
                                     <tr>
-                                         <td>ca_orderer</td> <td>0.00</td> <td>0.00</td> <td>10.1</td> <td>9.95</td> <td>0.00</td> <td>0.00</td> <td>0.00</td> <td>0.00</td>
+                                         <td>ca_org2</td> <td>NaN</td> <td>NaN</td> <td>-</td> <td>-</td> <td>-</td> <td>-</td> <td>-</td> <td>-</td>
                                     </tr>
                                     <tr>
-                                         <td>ca_org2</td> <td>0.03</td> <td>0.00</td> <td>8.02</td> <td>7.91</td> <td>0.0000668</td> <td>0.00</td> <td>0.00</td> <td>0.00</td>
-                                    </tr>
-                                    <tr>
-                                         <td>ca_org1</td> <td>0.00</td> <td>0.00</td> <td>19.6</td> <td>19.6</td> <td>0.0000668</td> <td>0.00</td> <td>0.00</td> <td>0.00</td>
+                                         <td>ca_orderer</td> <td>NaN</td> <td>NaN</td> <td>-</td> <td>-</td> <td>-</td> <td>-</td> <td>-</td> <td>-</td>
                                     </tr>
                                 </table>
                                 </tr>
@@ -235,7 +232,7 @@
                                      <th>Name</th> <th>Succ</th> <th>Fail</th> <th>Send Rate (TPS)</th> <th>Max Latency (s)</th> <th>Min Latency (s)</th> <th>Avg Latency (s)</th> <th>Throughput (TPS)</th>
                                 </tr>
                                 <tr>
-                                     <td>checkAPK</td> <td>500</td> <td>0</td> <td>315.3</td> <td>0.03</td> <td>0.00</td> <td>0.01</td> <td>314.5</td>
+                                     <td>checkAPK</td> <td>500</td> <td>0</td> <td>537.6</td> <td>0.01</td> <td>0.00</td> <td>0.00</td> <td>536.5</td>
                                 </tr>
                             </table>
                         <h3>Resource utilization for checkAPK</h3>
@@ -254,7 +251,7 @@
                                      <th>Name</th> <th>Succ</th> <th>Fail</th> <th>Send Rate (TPS)</th> <th>Max Latency (s)</th> <th>Min Latency (s)</th> <th>Avg Latency (s)</th> <th>Throughput (TPS)</th>
                                 </tr>
                                 <tr>
-                                     <td>revokeAPK</td> <td>500</td> <td>0</td> <td>336.7</td> <td>0.04</td> <td>0.00</td> <td>0.01</td> <td>335.8</td>
+                                     <td>revokeAPK</td> <td>500</td> <td>0</td> <td>532.5</td> <td>0.01</td> <td>0.00</td> <td>0.00</td> <td>531.3</td>
                                 </tr>
                             </table>
                         <h3>Resource utilization for revokeAPK</h3>
