@@ -14,7 +14,7 @@ set -eu
 # - fabric-samples present under /root/fabric/fabric-samples
 # - chaincode source at /root/EBCPA/chaincode-go
 
-ROOT_DIR="/root"
+ROOT_DIR="/home/ch"
 FABRIC_SAMPLES="${ROOT_DIR}/fabric/fabric-samples"
 TEST_NETWORK="${FABRIC_SAMPLES}/test-network"
 CC_PATH="${ROOT_DIR}/EBCPA/chaincode-go"

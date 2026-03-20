@@ -12,62 +12,61 @@ type SmartContract struct {
 	contractapi.Contract
 }
 
-// WitnessEntity represents the storage format in the paper (Entity{W, unrevoked})
+// WitnessEntity represents storage format (VC, CS, unrevoked)
 type WitnessEntity struct {
-	W         string `json:"W"`
+	VC        string `json:"vc"`
+	CS        string `json:"cs"`
 	Unrevoked bool   `json:"unrevoked"`
 }
 
-// Upload stores the witness information for UD/AP_i.
-// Only NM/Authority can invoke (mapped to attribute apklist.creator=true).
-func (s *SmartContract) Upload(ctx contractapi.TransactionContextInterface, udOrAPi string, w string) error {
+// Store stores (VC, CS) for DID (only Authority)
+func (s *SmartContract) Store(ctx contractapi.TransactionContextInterface, did string, vc string, cs string) error {
 	if err := ctx.GetClientIdentity().AssertAttributeValue("apklist.creator", "true"); err != nil {
 		return fmt.Errorf("invoker not authorized (requires apklist.creator=true)")
 	}
 
-	entity := WitnessEntity{W: w, Unrevoked: true}
+	entity := WitnessEntity{VC: vc, CS: cs, Unrevoked: true}
 	b, err := json.Marshal(entity)
 	if err != nil {
 		return err
 	}
-	return ctx.GetStub().PutState(udOrAPi, b)
+	return ctx.GetStub().PutState(did, b)
 }
 
-// Retrieve returns witness information if not revoked; otherwise returns "_".
-func (s *SmartContract) Retrieve(ctx contractapi.TransactionContextInterface, udOrAPi string) (string, error) {
-	b, err := ctx.GetStub().GetState(udOrAPi)
+// Query returns (VC, CS) if not revoked; otherwise returns ("_", "_")
+func (s *SmartContract) Query(ctx contractapi.TransactionContextInterface, did string) (string, string, error) {
+	b, err := ctx.GetStub().GetState(did)
 	if err != nil {
-		return "", fmt.Errorf("failed to read from world state: %v", err)
+		return "", "", fmt.Errorf("failed to read from world state: %v", err)
 	}
 	if b == nil {
-		return "_", nil
+		return "_", "_", nil
 	}
 
 	var entity WitnessEntity
 	if err := json.Unmarshal(b, &entity); err != nil {
-		return "", err
+		return "", "", err
 	}
 
 	if entity.Unrevoked {
-		return entity.W, nil
+		return entity.VC, entity.CS, nil
 	}
-	return "_", nil
+	return "_", "_", nil
 }
 
-// Revoke marks UD/AP_i as revoked (unrevoked=false).
-// Only NM/Authority can invoke (mapped to attribute apklist.creator=true).
-func (s *SmartContract) Revoke(ctx contractapi.TransactionContextInterface, udOrAPi string) error {
+// Update marks DID revoked (unrevoked=false) (only Authority)
+func (s *SmartContract) Update(ctx contractapi.TransactionContextInterface, did string) error {
 	if err := ctx.GetClientIdentity().AssertAttributeValue("apklist.creator", "true"); err != nil {
 		return fmt.Errorf("invoker not authorized (requires apklist.creator=true)")
 	}
 
-	b, err := ctx.GetStub().GetState(udOrAPi)
+	b, err := ctx.GetStub().GetState(did)
 	if err != nil {
 		return fmt.Errorf("failed to read from world state: %v", err)
 	}
 	if b == nil {
-		// match paper logic: if not present, do nothing (or return error). Here: error to surface inconsistent test.
-		return fmt.Errorf("the witness %s does not exist", udOrAPi)
+		// strict but safe: treat missing as no-op
+		return nil
 	}
 
 	var entity WitnessEntity
@@ -81,26 +80,9 @@ func (s *SmartContract) Revoke(ctx contractapi.TransactionContextInterface, udOr
 		if err != nil {
 			return err
 		}
-		return ctx.GetStub().PutState(udOrAPi, nb)
+		return ctx.GetStub().PutState(did, nb)
 	}
 
 	return nil
-}
-
-// --- Backward-compatible APIs (optional) ---
-
-// Submit is kept for compatibility with existing benchmarks.
-func (s *SmartContract) Submit(ctx contractapi.TransactionContextInterface, hash string, apk1 string, apk2 string) error {
-	// store apk1|apk2 as a combined witness string for legacy call sites
-	return s.Upload(ctx, hash, fmt.Sprintf("%s|%s", apk1, apk2))
-}
-
-// Check is kept for compatibility with existing benchmarks.
-func (s *SmartContract) Check(ctx contractapi.TransactionContextInterface, hash string) (bool, error) {
-	w, err := s.Retrieve(ctx, hash)
-	if err != nil {
-		return false, err
-	}
-	return w != "_", nil
 }
 

@@ -1,3 +1,9 @@
+请先到仓库下载https://github.com/Shen-An/EBCPA
+
+修改deploy_apklist_lifecycle.sh
+run_benchmark.sh
+的ROOT_DIR="/home/ch"为自己的目录
+
 # Our EBCPA protocol
 
 This workspace (`/root/EBCPA4ourAlogrithm`) contains the Go-based Fabric chaincode implementation and the Caliper benchmark assets used to reproduce the performance results.

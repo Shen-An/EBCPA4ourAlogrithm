@@ -4,7 +4,7 @@ set -eu
 # Try to enable pipefail when supported.
 (set -o pipefail) 2>/dev/null && set -o pipefail || true
 
-ROOT_DIR="/root"
+ROOT_DIR="/home/ch"
 PROJECT_DIR="${ROOT_DIR}/EBCPA"
 CALIPER_DIR="${PROJECT_DIR}/caliper-workspace"
 NETWORK_CFG="${CALIPER_DIR}/networks/networkConfig.json"

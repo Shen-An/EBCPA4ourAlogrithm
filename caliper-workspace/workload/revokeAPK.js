@@ -22,9 +22,9 @@ class RevokeWorkload extends WorkloadModuleBase {
         const id = 'ID' + this.workerIndex + '_' + this.txIndex.toString();
 
         const args = {
-            contractId: 'apklist',
+            contractId: this.roundArguments.contractId || 'apklist',
             contractVersion: 'v1',
-            contractFunction: 'Revoke',
+            contractFunction: 'Update',
             contractArguments: [id],
             timeout: 30
         };
