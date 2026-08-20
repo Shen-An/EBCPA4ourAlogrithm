@@ -2,7 +2,7 @@
 
 const { WorkloadModuleBase } = require('@hyperledger/caliper-core');
 
-function randomWitness() {
+function randomWitnessPart() {
     // simple deterministic-ish payload to control size
     return 'W' + Math.random().toString(16).slice(2) + Math.random().toString(16).slice(2);
 }
@@ -16,13 +16,14 @@ class UploadWorkload extends WorkloadModuleBase {
     async submitTransaction() {
         this.txIndex++;
         const id = 'ID' + this.workerIndex + '_' + this.txIndex.toString();
-        const w = randomWitness();
+        const vc = randomWitnessPart();
+        const cs = randomWitnessPart();
 
         const args = {
             contractId: 'apklist',
             contractVersion: 'v1',
-            contractFunction: 'Upload',
-            contractArguments: [id, w],
+            contractFunction: 'Store',
+            contractArguments: [id, vc, cs],
             timeout: 30
         };
 

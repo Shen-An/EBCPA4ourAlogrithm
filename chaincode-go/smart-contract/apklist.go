@@ -33,25 +33,27 @@ func (s *SmartContract) Store(ctx contractapi.TransactionContextInterface, did s
 	return ctx.GetStub().PutState(did, b)
 }
 
-// Query returns (VC, CS) if not revoked; otherwise returns ("_", "_")
-func (s *SmartContract) Query(ctx contractapi.TransactionContextInterface, did string) (string, string, error) {
+// Query returns "VC|CS" if not revoked; otherwise returns "_|_".
+// NOTE: fabric-contract-api-go allows at most one non-error return value,
+// so (VC, CS) are joined into a single "VC|CS" string.
+func (s *SmartContract) Query(ctx contractapi.TransactionContextInterface, did string) (string, error) {
 	b, err := ctx.GetStub().GetState(did)
 	if err != nil {
-		return "", "", fmt.Errorf("failed to read from world state: %v", err)
+		return "", fmt.Errorf("failed to read from world state: %v", err)
 	}
 	if b == nil {
-		return "_", "_", nil
+		return "_|_", nil
 	}
 
 	var entity WitnessEntity
 	if err := json.Unmarshal(b, &entity); err != nil {
-		return "", "", err
+		return "", err
 	}
 
 	if entity.Unrevoked {
-		return entity.VC, entity.CS, nil
+		return entity.VC + "|" + entity.CS, nil
 	}
-	return "_", "_", nil
+	return "_|_", nil
 }
 
 // Update marks DID revoked (unrevoked=false) (only Authority)

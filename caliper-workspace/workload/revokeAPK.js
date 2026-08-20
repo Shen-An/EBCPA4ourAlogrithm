@@ -26,7 +26,8 @@ class RevokeWorkload extends WorkloadModuleBase {
             contractVersion: 'v1',
             contractFunction: 'Update',
             contractArguments: [id],
-            timeout: 30
+            timeout: 30,
+            readOnly: true
         };
 
         if (this.txIndex === this.limitIndex) {
