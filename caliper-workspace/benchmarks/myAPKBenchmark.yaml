@@ -24,7 +24,7 @@ test:
           rateControl:
             type: fixed-rate
             opts:
-              tps: 490
+              tps: 500
           workload:
             module: workload/checkAPK.js
             arguments:
