@@ -8,23 +8,23 @@ test:
         - label: submitAPK
           description: Submit apk benchmark
           txNumber: 500
-          rateControl: 
-            type: fixed-load
+          rateControl:
+            type: fixed-rate
             opts:
-              tps:25
+              tps: 30
           workload:
             module: workload/submitAPK.js
             arguments:
               assets: 10
               contractId: apklist
-        
+
         - label: checkAPK
           description: Check apk benchmark
           txNumber: 500
-          rateControl: 
-            type: fixed-load
+          rateControl:
+            type: fixed-rate
             opts:
-              tps:25
+              tps: 490
           workload:
             module: workload/checkAPK.js
             arguments:
@@ -34,10 +34,10 @@ test:
         - label: revokeAPK
           description: Revoke apk benchmark
           txNumber: 500
-          rateControl: 
-            type: fixed-load
+          rateControl:
+            type: fixed-rate
             opts:
-              tps:25
+              tps: 540
           workload:
             module: workload/revokeAPK.js
             arguments:

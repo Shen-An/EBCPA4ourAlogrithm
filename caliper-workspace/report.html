@@ -154,13 +154,13 @@
                     </tr>
 
                     <tr>
-                         <td>STORE (submitAPK)</td> <td>500</td> <td>0</td> <td>66</td> <td>2.47</td> <td>0.02</td> <td>0.22</td> <td>60</td>
+                         <td>STORE (submitAPK)</td> <td>500</td> <td>0</td> <td>31</td> <td>0.30</td> <td>0.01</td> <td>0.15</td> <td>30</td>
                     </tr>
                     <tr>
-                         <td>QUERY (checkAPK)</td> <td>500</td> <td>0</td> <td>468</td> <td>0.01</td> <td>0.00</td> <td>0.00</td> <td>472</td>
+                         <td>QUERY (checkAPK)</td> <td>500</td> <td>0</td> <td>495</td> <td>0.01</td> <td>0.00</td> <td>0.00</td> <td>494</td>
                     </tr>
                     <tr>
-                         <td>UPDATE (revokeAPK)</td> <td>500</td> <td>0</td> <td>498</td> <td>0.02</td> <td>0.00</td> <td>0.00</td> <td>498</td>
+                         <td>UPDATE (revokeAPK)</td> <td>500</td> <td>0</td> <td>546</td> <td>0.01</td> <td>0.00</td> <td>0.00</td> <td>544</td>
                     </tr>
                 </table>
             </div>
@@ -168,8 +168,9 @@
                 <h2>Benchmark round: submitAPK</h2>
                 <p>Submit apk benchmark</p>
                 <pre style="overflow: visible;white-space: pre-wrap;max-height:100%;">rateControl:
-  type: fixed-load
-  opts: &#39;tps:25&#39;
+  type: fixed-rate
+  opts:
+    tps: 30
 </pre>
                         <h3>Performance metrics for submitAPK</h3>
                             <table style="min-width: 100%;">
@@ -177,7 +178,7 @@
                                      <th>Function</th> <th>Success</th> <th>Fail</th> <th>Send Rate (TPS)</th> <th>Max Latency (s)</th> <th>Min Latency (s)</th> <th>Avg Latency (s)</th> <th>Throughput (TPS)</th>
                                 </tr>
                                 <tr>
-                                     <td>STORE (submitAPK)</td> <td>500</td> <td>0</td> <td>66</td> <td>2.47</td> <td>0.02</td> <td>0.22</td> <td>60</td>
+                                     <td>STORE (submitAPK)</td> <td>500</td> <td>0</td> <td>31</td> <td>0.30</td> <td>0.01</td> <td>0.15</td> <td>30</td>
                                 </tr>
                             </table>
                         <h3>Resource utilization for submitAPK</h3>
@@ -189,13 +190,13 @@
                                          <th>Name</th> <th>CPU%(max)</th> <th>CPU%(avg)</th> <th>Memory(max) [MB]</th> <th>Memory(avg) [MB]</th> <th>Traffic In [MB]</th> <th>Traffic Out [KB]</th> <th>Disc Write [B]</th> <th>Disc Read [B]</th>
                                     </tr>
                                     <tr>
-                                         <td>dev-peer0.org1.example.com-apklist_1-6a81a06a81900c8b62ed2cadffc70bbb6251a87e55c6853353cf34ed7b54988d</td> <td>0.00</td> <td>0.00</td> <td>11.3</td> <td>10.9</td> <td>1.08</td> <td>467</td> <td>0.00</td> <td>0.00</td>
+                                         <td>dev-peer0.org2.example.com-apklist_1-6a81a06a81900c8b62ed2cadffc70bbb6251a87e55c6853353cf34ed7b54988d</td> <td>0.00</td> <td>0.00</td> <td>21.6</td> <td>21.6</td> <td>1.03</td> <td>385</td> <td>0.00</td> <td>0.00</td>
                                     </tr>
                                     <tr>
-                                         <td>dev-peer0.org2.example.com-apklist_1-6a81a06a81900c8b62ed2cadffc70bbb6251a87e55c6853353cf34ed7b54988d</td> <td>0.00</td> <td>0.00</td> <td>10.5</td> <td>10.5</td> <td>1.08</td> <td>466</td> <td>0.00</td> <td>0.00</td>
+                                         <td>dev-peer0.org1.example.com-apklist_1-6a81a06a81900c8b62ed2cadffc70bbb6251a87e55c6853353cf34ed7b54988d</td> <td>0.00</td> <td>0.00</td> <td>22.4</td> <td>22.4</td> <td>1.03</td> <td>378</td> <td>0.00</td> <td>0.00</td>
                                     </tr>
                                     <tr>
-                                         <td>peer0.org1.example.com</td> <td>NaN</td> <td>NaN</td> <td>117</td> <td>112</td> <td>-</td> <td>-</td> <td>-</td> <td>-</td>
+                                         <td>peer0.org1.example.com</td> <td>NaN</td> <td>NaN</td> <td>184</td> <td>182</td> <td>-</td> <td>-</td> <td>-</td> <td>-</td>
                                     </tr>
                                     <tr>
                                          <td>orderer.example.com</td> <td>NaN</td> <td>NaN</td> <td>-</td> <td>-</td> <td>-</td> <td>-</td> <td>-</td> <td>-</td>
@@ -232,8 +233,9 @@
                 <h2>Benchmark round: checkAPK</h2>
                 <p>Check apk benchmark</p>
                 <pre style="overflow: visible;white-space: pre-wrap;max-height:100%;">rateControl:
-  type: fixed-load
-  opts: &#39;tps:25&#39;
+  type: fixed-rate
+  opts:
+    tps: 490
 </pre>
                         <h3>Performance metrics for checkAPK</h3>
                             <table style="min-width: 100%;">
@@ -241,7 +243,7 @@
                                      <th>Function</th> <th>Success</th> <th>Fail</th> <th>Send Rate (TPS)</th> <th>Max Latency (s)</th> <th>Min Latency (s)</th> <th>Avg Latency (s)</th> <th>Throughput (TPS)</th>
                                 </tr>
                                 <tr>
-                                     <td>QUERY (checkAPK)</td> <td>500</td> <td>0</td> <td>468</td> <td>0.01</td> <td>0.00</td> <td>0.00</td> <td>472</td>
+                                     <td>QUERY (checkAPK)</td> <td>500</td> <td>0</td> <td>495</td> <td>0.01</td> <td>0.00</td> <td>0.00</td> <td>494</td>
                                 </tr>
                             </table>
                         <h3>Resource utilization for checkAPK</h3>
@@ -251,8 +253,9 @@
                 <h2>Benchmark round: revokeAPK</h2>
                 <p>Revoke apk benchmark</p>
                 <pre style="overflow: visible;white-space: pre-wrap;max-height:100%;">rateControl:
-  type: fixed-load
-  opts: &#39;tps:25&#39;
+  type: fixed-rate
+  opts:
+    tps: 540
 </pre>
                         <h3>Performance metrics for revokeAPK</h3>
                             <table style="min-width: 100%;">
@@ -260,7 +263,7 @@
                                      <th>Function</th> <th>Success</th> <th>Fail</th> <th>Send Rate (TPS)</th> <th>Max Latency (s)</th> <th>Min Latency (s)</th> <th>Avg Latency (s)</th> <th>Throughput (TPS)</th>
                                 </tr>
                                 <tr>
-                                     <td>UPDATE (revokeAPK)</td> <td>500</td> <td>0</td> <td>498</td> <td>0.02</td> <td>0.00</td> <td>0.00</td> <td>498</td>
+                                     <td>UPDATE (revokeAPK)</td> <td>500</td> <td>0</td> <td>546</td> <td>0.01</td> <td>0.00</td> <td>0.00</td> <td>544</td>
                                 </tr>
                             </table>
                         <h3>Resource utilization for revokeAPK</h3>
@@ -279,8 +282,9 @@ rounds:
     description: Submit apk benchmark
     txNumber: 500
     rateControl:
-      type: fixed-load
-      opts: &#39;tps:25&#39;
+      type: fixed-rate
+      opts:
+        tps: 30
     workload:
       module: workload&#x2F;submitAPK.js
       arguments:
@@ -290,8 +294,9 @@ rounds:
     description: Check apk benchmark
     txNumber: 500
     rateControl:
-      type: fixed-load
-      opts: &#39;tps:25&#39;
+      type: fixed-rate
+      opts:
+        tps: 490
     workload:
       module: workload&#x2F;checkAPK.js
       arguments:
@@ -301,8 +306,9 @@ rounds:
     description: Revoke apk benchmark
     txNumber: 500
     rateControl:
-      type: fixed-load
-      opts: &#39;tps:25&#39;
+      type: fixed-rate
+      opts:
+        tps: 540
     workload:
       module: workload&#x2F;revokeAPK.js
       arguments:
